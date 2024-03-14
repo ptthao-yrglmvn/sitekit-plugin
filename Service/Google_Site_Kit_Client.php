@@ -136,6 +136,8 @@ class Google_Site_Kit_Client extends Google_Client
      * Fetches an OAuth 2.0 access token by using a temporary code.
      *
      * @param string $code Temporary authorization code, or undelegated token code.
+     * 
+     * @param string $codeVerifier the code verifier used for PKCE (if applicable)
      *
      * @return array Access token.
      *
@@ -144,7 +146,7 @@ class Google_Site_Kit_Client extends Google_Client
      *
      * @since 1.0.0
      */
-    public function fetchAccessTokenWithAuthCode($code)
+    public function fetchAccessTokenWithAuthCode($code, $codeVerifier = null)
     {
         if (strlen($code) === 0) {
             throw new InvalidArgumentException('Invalid code');
